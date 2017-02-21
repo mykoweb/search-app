@@ -1,0 +1,37 @@
+
+<div class="container">
+  <h1>
+    {{title}}
+  </h1>
+  
+  <form id="main-form">
+    <div class="form-group">
+      <label for="searchTerm">Search term(s)</label>
+      <input name="search" class="form-control" id="searchTerm" #searchTerm>
+    </div>
+  
+    <div class="form-group">
+      <label for="categoryTerm">Category</label>
+      <select name="categories" class="form-control" id="categoryTerm" #categoryTerm>
+        <option value="">none</option>
+        <option value="condiments">Condiments</option>
+        <option value="desserts">Desserts</option>
+        <option value="fruit">Fruit</option>
+        <option value="fungi">Fungi</option>
+        <option value="grains">Grains</option>
+        <option value="meat">Meat</option>
+        <option value="seafood">Seafood</option>
+        <option value="vegetables">Vegetables</option>
+      </select>
+    </div>
+  
+    <button class="btn btn-default" (click)="searchFood(searchTerm, categoryTerm)">Search</button>
+  </form>
+  
+  <ul class="list-group" id="search-results">
+    <li class="list-group-item" *ngFor="let food of foods">{{ food.name }}</li>
+  </ul>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ng2-bootstrap/x.x.x/ng2-bootstrap.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
