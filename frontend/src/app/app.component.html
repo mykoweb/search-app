@@ -29,8 +29,10 @@
   </form>
   
   <ul class="list-group" id="search-results">
-    <li class="list-group-item" *ngFor="let food of foods">{{ food.name }}</li>
+    <li class="list-group-item" *ngFor="let food of foods | paginate: { itemsPerPage: 10, currentPage: p }">{{ food.name }}</li>
   </ul>
+
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ng2-bootstrap/x.x.x/ng2-bootstrap.min.js"></script>

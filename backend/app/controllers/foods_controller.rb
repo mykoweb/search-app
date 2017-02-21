@@ -7,7 +7,7 @@ class FoodsController < ApplicationController
               Food.where(food_sql_query, *names)
             elsif names.empty?
               Category.where("name LIKE ?", category).first.try(:foods)
-            end || []
+            end.try(:order, :name) || []
     render json: foods
   end
 
@@ -31,9 +31,10 @@ class FoodsController < ApplicationController
 
   def names
     return '' unless params[:name].present?
-    # @_names ||= params[:name] || ''
     return '%' + params[:name] + '%' if params[:name].is_a? String
-    params[:name].map { |name| ['%' + name.first + '%'] }
+    params[:name].map do |name|
+      name.is_a?(String) ? ['%' + name + '%'] : ['%' + name.first + '%']
+    end
   end
 
   def category

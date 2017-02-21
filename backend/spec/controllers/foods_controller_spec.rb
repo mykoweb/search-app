@@ -115,8 +115,8 @@ describe FoodsController do
             expect(json).to eq [
               { 'name' => 'carrot', 'category' => { 'name' => 'vegetable' } },
               { 'name' => 'celery', 'category' => { 'name' => 'vegetable' } },
-              { 'name' => 'turnip', 'category' => { 'name' => 'vegetable' } },
-              { 'name' => 'fish', 'category' => { 'name' => 'seafood' } }
+              { 'name' => 'fish', 'category' => { 'name' => 'seafood' } },
+              { 'name' => 'turnip', 'category' => { 'name' => 'vegetable' } }
             ]
           end
         end
